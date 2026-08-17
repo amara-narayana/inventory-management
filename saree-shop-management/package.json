@@ -1,0 +1,50 @@
+{
+  "name": "saree-shop-management",
+  "version": "1.0.0",
+  "description": "Professional Saree Shop Inventory, POS & Logistics Desktop ERP",
+  "author": "SareeShop Management",
+  "main": "desktop/electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:frontend": "cd frontend && npm run dev",
+    "electron:dev": "npm run build:frontend && electron .",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:frontend && npm run build:electron",
+    "build:electron": "electron-builder",
+    "dist": "npm run build:frontend && electron-builder",
+    "install:all": "npm install && cd frontend && npm install",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && pytest",
+    "test:frontend": "cd frontend && npm run test",
+    "migrate": "cd backend && alembic upgrade head",
+    "migrate:make": "cd backend && alembic revision --autogenerate -m"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.sareeshop.management",
+    "productName": "Saree Shop Management",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/electron/**/*",
+      "frontend/dist/**/*",
+      "backend/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "desktop/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
