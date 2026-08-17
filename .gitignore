@@ -1,64 +1,58 @@
 ```
-# Dependencies
-node_modules/
-venv/
-.venv/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
 env/
+venv/
 .venv/
-venv.bak/
-pip-log.txt
-pip-delete-this-directory.txt
+.ENV
+.ENV.*
+.venv.bak/
+.python-version
 
-# Build and distribution artifacts
-dist/
+# Build artifacts
 build/
+dist/
+*.egg
 *.egg-info/
-.eggs/
-.installed.cfg
-lib/
-lib64/
-parts/
-sdist/
-develop-eggs/
-.coverage
-coverage.xml
-htmlcov/
-.tox/
-.nox/
-.coverage.*
-.cache
-.pytest_cache/
-.mypy_cache/
+*.so
+*.whl
+
+# Logs
+*.log
 
 # Environment variables
 .env
 .env.local
 .env.*
-!.env.example
 
-# IDE and editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+*.tmp
+
+# OS
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
+# Testing
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.mypy_cache/
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Distribution / packaging
+*.tar.gz
+*.zip
+
+# Local configuration
+.settings/
+*.sublime-project
+*.sublime-workspace
 ```
