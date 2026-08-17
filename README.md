@@ -1,0 +1,2 @@
+# inventory-management
+customer friendly
