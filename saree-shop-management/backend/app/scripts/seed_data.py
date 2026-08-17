@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 from sqlalchemy.orm import Session
 from app.core.database import SessionLocal, engine
 from app.models import User, Role, Permission, user_roles, Base
-from app.security.password_hashing import hash_password
+from app.core.security import get_password_hash
 
 def create_tables():
     """Create all database tables."""
@@ -86,7 +86,7 @@ def seed_admin_user(db: Session, roles: dict):
         admin = User(
             username="admin",
             email="admin@sareeshop.com",
-            password_hash=hash_password("admin123"),
+            password_hash=get_password_hash("admin123"),
             full_name="System Administrator",
             is_active=True
         )

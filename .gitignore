@@ -1,108 +1,58 @@
 ```
-# Dependencies
-node_modules/
-venv/
-.venv/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
 env/
+venv/
 .venv/
-venv.bak/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.db
-*.sqlite
-*.sqlite3
-.pytest_cache/
-.mypy_cache/
-.hypothesis/
+.ENV
+.ENV.*
+.venv.bak/
+.python-version
 
-# Build and distribution artifacts
+# Build artifacts
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
 *.egg
+*.egg-info/
+*.so
+*.whl
+
+# Logs
+*.log
 
 # Environment variables
 .env
 .env.local
 .env.*
 
-# IDE and editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-.DS_Store
-Thumbs.db
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Icon?
-iTunes_Control/
-logs/
-*.log
 *.tmp
 
-# Python specific
-__pycache__/
-*.py[cod]
-*$py.class
-*$pyc.class
-*.so
-.Python
-.pytest_cache/
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
 .coverage
+coverage/
 htmlcov/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pyre/
-.pytype/
-cython_debug/
+.pytest_cache/
+.mypy_cache/
 
-# Alembic
-alembic/versions/
+# Distribution / packaging
+*.tar.gz
+*.zip
 
-# Frontend build artifacts
-frontend/dist/
-frontend/build/
-frontend/node_modules/
-frontend/.vite/
-frontend/.svelte-kit/
-frontend/cypress/screenshots/
-frontend/cypress/videos/
-
-# Security
-*.key
-*.pem
-*.crt
-*.cert
+# Local configuration
+.settings/
+*.sublime-project
+*.sublime-workspace
 ```

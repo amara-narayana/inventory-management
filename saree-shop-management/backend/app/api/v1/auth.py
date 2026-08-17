@@ -1,15 +1,33 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 from app.core.database import get_db
 from app.schemas.user import UserCreate, UserResponse, UserLogin, Token, RoleCreate, RoleResponse
 from app.models.user import User, Role
 from app.core.security import get_password_hash, verify_password
-from app.security.jwt import create_access_token
+from app.security.jwt import create_access_token, decode_access_token
 from datetime import timedelta
 from app.core.config import settings
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
+
+
+def get_current_user_from_token(request: Request, db: Session = Depends(get_db)) -> Optional[User]:
+    """Get current user from JWT token in request headers."""
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or not auth_header.startswith("Bearer "):
+        return None
+    
+    token = auth_header.split(" ")[1]
+    payload = decode_access_token(token)
+    if not payload:
+        return None
+    
+    user_id = payload.get("user_id")
+    if not user_id:
+        return None
+    
+    return db.query(User).filter(User.id == user_id).first()
 
 
 @router.post("/login", response_model=Token)
